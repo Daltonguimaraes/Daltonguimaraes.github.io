@@ -1,0 +1,11 @@
+.degrade {
+    background: rgb(0,101,128);
+    background: linear-gradient(90deg, rgba(0,101,128,1) 2%, rgba(255,153,0,1) 96%);
+    color: #ffffff;
+    padding: 1px;
+    margin: 0px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 8px;
+    font-style: normal;
+    text-align: left;
+}
