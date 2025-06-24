@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuração de Ambiente - Dalton Guimarães</title>
+  <link rel="icon" href="favicon/configurações.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding-top: 40px;
+      padding-bottom: 80px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+    }
+    h1, h2, h3 {
+      color: #0d6efd;
+    }
+    pre code {
+      background-color: #f1f1f1;
+      display: block;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .btn-back {
+      margin-bottom: 20px;
+    }
+    hr {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      border-color: #e0e0e0;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+    ol li {
+      margin-bottom: 1rem;
+    }
+    a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="btn btn-outline-primary btn-back" href="index.html">&larr; Voltar ao Início</a>
+    <h1>Guia de Configuração de Ambiente</h1>
+    <p>Aprenda como configurar um ambiente profissional de desenvolvimento Python no Windows.</p>
+    <hr />
+
+    <h3>1. Instalar o Python</h3>
+    <ol>
+      <li>Acesse <a href="https://www.python.org/downloads/windows/" target="_blank">python.org</a> e baixe a versão mais recente.</li>
+      <li>Durante a instalação, selecione "Add Python to PATH" e "Install for all users".</li>
+      <li>Finalize a instalação e verifique no terminal:
+        <pre><code>python --version</code></pre>
+      </li>
+      <li>Atualize o pip e instale pacotes:
+        <pre><code>python -m pip install --upgrade pip
+pip install virtualenv wheel</code></pre>
+      </li>
+    </ol>
+
+    <h3>2. Configurar o VSCode</h3>
+    <ol>
+      <li>Instale o <a href="https://code.visualstudio.com/">VSCode</a>.</li>
+      <li>Adicione a extensão Python via <code>Ctrl + Shift + X</code>.</li>
+      <li>Crie e ative um ambiente virtual:
+        <pre><code>python -m venv venv
+venv\Scripts\activate</code></pre>
+      </li>
+      <li>Abra a paleta de comandos (<code>Ctrl+Shift+P</code>) e selecione: <br><strong>Python: Select Interpreter</strong>.</li>
+    </ol>
+
+    <h3>3. Instalar e Configurar o Git</h3>
+    <ol>
+      <li>Instale via <a href="https://git-scm.com/downloads">git-scm.com</a>.</li>
+      <li>Verifique a instalação:
+        <pre><code>git --version</code></pre>
+      </li>
+      <li>Configure nome e e-mail:
+        <pre><code>git config --global user.name "Seu Nome"
+git config --global user.email "email@exemplo.com"</code></pre>
+      </li>
+    </ol>
+
+    <h3>4. Gerar chave SSH para GitHub</h3>
+    <pre><code>ssh-keygen -t rsa -b 4096 -C "email@exemplo.com"</code></pre>
+    <p>Adicione a chave ao GitHub em <a href="https://github.com/settings/keys">Settings &gt; SSH Keys</a>.</p>
+    <p>Teste a conexão:</p>
+    <pre><code>ssh -T git@github.com</code></pre>
+
+    <h3>Extras</h3>
+    <ul>
+      <li><strong>Windows Terminal:</strong> Disponível na <a href="https://apps.microsoft.com/store/detail/windows-terminal">Microsoft Store</a>.</li>
+      <li><strong>WSL:</strong> Rode um ambiente Linux:
+        <pre><code>wsl --install</code></pre>
+      </li>
+    </ul>
+    <p class="text-muted">Ambiente configurado com sucesso! Pronto para codar! 🚀</p>
+  </div>
+</body>
+</html>

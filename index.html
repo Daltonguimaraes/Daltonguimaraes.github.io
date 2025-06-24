@@ -1,81 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil</title>
-    <link rel="stylesheet" href="css/index.css"/>
-    <link rel="stylesheet" href="css/card.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link href="https://fonts.cdnfonts.com/css/source-sans-pro" rel="stylesheet">
-    <link rel="icon" href="favicon/usuário.png">
-    <style>@import url('https://fonts.cdnfonts.com/css/source-sans-pro');</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil | Dalton Guimarães</title>
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/card.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/source-sans-pro" rel="stylesheet" />
+  <link rel="icon" href="favicon/usuário.png" />
+  <style>
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      background-color: #f9f9f9;
+    }
+    .degrade {
+      background: linear-gradient(90deg, #007bff 0%, #00c3ff 100%);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    .card svg {
+      width: 40px;
+      height: 40px;
+    }
+    .para {
+      margin-top: 1rem;
+    }
+    .tab-content {
+      padding: 2rem;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    a {
+      text-decoration: none;
+    }
+    .tab-pane p a {
+      font-weight: 500;
+    }
+  </style>
 </head>
 <body>
-    <div class="degrade">
-        <!-- <h1>Olá, mundo!</h1> -->
-        <!-- <h1>- Página inicial</h1> -->
-    </div>
-    <hr>
-    <ul class="nav nav-tabs" role="tablist">
+  <div class="degrade">
+    <h1>Dalton Guimarães</h1>
+    <p>Economista | Cientista de Dados | Desenvolvedor</p>
+  </div>
+
+  <nav>
+    <ul class="nav nav-tabs justify-content-center" role="tablist">
       <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="disabled-tab-0" data-bs-toggle="tab" href="#disabled-tabpanel-0" role="tab" aria-controls="disabled-tabpanel-0" aria-selected="true">Sobre</a>
+        <a class="nav-link active" id="sobre-tab" data-bs-toggle="tab" href="#sobre" role="tab">Sobre</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" id="disabled-tab-1" data-bs-toggle="tab" href="#disabled-tabpanel-1" role="tab" aria-controls="disabled-tabpanel-1" aria-selected="false">Habilidades</a>
+        <a class="nav-link" id="habilidades-tab" data-bs-toggle="tab" href="#habilidades" role="tab">Habilidades</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" id="disabled-tab-2" data-bs-toggle="tab" href="#disabled-tabpanel-2" role="tab" aria-controls="disabled-tabpanel-2" aria-selected="false">trabalhos / projetos</a>
+        <a class="nav-link" id="projetos-tab" data-bs-toggle="tab" href="#projetos" role="tab">Projetos</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" id="disabled-tab-3" data-bs-toggle="tab" href="#disabled-tabpanel-3" role="tab" aria-controls="disabled-tabpanel-3" aria-selected="false">Contatos</a>
+        <a class="nav-link" id="contato-tab" data-bs-toggle="tab" href="#contato" role="tab">Contato</a>
       </li>
     </ul>
+  </nav>
 
-    <!-- Sobre -->
-
-    <div class="tab-content pt-5" id="tab-content">
-      <div class="tab-pane active" id="disabled-tabpanel-0" role="tabpanel" aria-labelledby="disabled-tab-0">
-        
-        <div class="card">
-          <div class="content">
-            <svg
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M20 9V5H4V9H20ZM20 11H4V19H20V11ZM3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM5 12H8V17H5V12ZM5 6H7V8H5V6ZM9 6H11V8H9V6Z"
-              ></path>
-            </svg>
-            <p class="para">
-              Página reservada ao resumo sobre Dalton Carvalho Guimarães
-            </p>
-          </div>
+  <div class="tab-content" id="tab-content">
+    <!-- SOBRE -->
+    <div class="tab-pane fade show active" id="sobre" role="tabpanel">
+      <div class="card p-4">
+        <div class="content d-flex align-items-center gap-3">
+          <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 9V5H4V9H20ZM20 11H4V19H20V11ZM3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM5 12H8V17H5V12ZM5 6H7V8H5V6ZM9 6H11V8H9V6Z"/>
+          </svg>
+          <p class="para mb-0">Profissional multidisciplinar com foco em análise de dados, automação, visualização e resolução de problemas reais usando tecnologia e economia aplicada.</p>
         </div>
       </div>
-      
-      <!-- Habilidades -->
-      
-      <div class="tab-pane" id="disabled-tabpanel-1" role="tabpanel" aria-labelledby="disabled-tab-1">
-        Página com a descrição de algumas habilidades absorvida ao longo do tempo de trabalho
-      </div>
-
-      <!-- Trabalhos -->
-
-      <div class="tab-pane" id="disabled-tabpanel-2" role="tabpanel" aria-labelledby="disabled-tab-2">Descrição de trabalhos
-        <p><a href="config.html" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Configuração de ambiente local</a></p>
-        <p><a href="#" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Configuração de ambiente python</a></p>
-      </div>
-      <!-- Contados -->
-
-      <div class="tab-pane" id="disabled-tabpanel-3" role="tabpanel" aria-labelledby="disabled-tab-3">Links de contatos</div>
     </div>
 
+    <!-- HABILIDADES -->
+    <div class="tab-pane fade" id="habilidades" role="tabpanel">
+      <ul>
+        <li>Python, R, SQL, Ruby</li>
+        <li>Pandas, Plotly, Seaborn, Scikit-learn</li>
+        <li>Qlik Sense, Power BI, Dash</li>
+        <li>Oracle, PostgreSQL, ClickHouse, SQL Server</li>
+        <li>Docker, Flask, Django, Rails</li>
+      </ul>
+    </div>
 
-    <script src="js/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- PROJETOS -->
+    <div class="tab-pane fade" id="projetos" role="tabpanel">
+      <p><a href="config_local.html" class="link-primary">Configuração de ambiente local</a></p>
+      <p><a href="config_python.html" class="link-primary">Configuração de ambiente Python</a></p>
+    </div>
 
+    <!-- CONTATO -->
+    <div class="tab-pane fade" id="contato" role="tabpanel">
+      <p>📧 Email: <a href="mailto:seuemail@email.com">seuemail@email.com</a></p>
+      <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/dalton-guimar%C3%A3es-437b83201/" target="_blank">Perfil no LinkedIn</a></p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
