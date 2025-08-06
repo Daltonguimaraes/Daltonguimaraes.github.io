@@ -1,0 +1,23 @@
+Economista e desenvolvedor com foco em dados públicos, Python e visualização com Qlik Sense e Dashboards interativos.
+
+
+<div class="tab-pane fade show active" id="sobre" role="tabpanel">
+    <div class="container overflow-hidden">
+    <div class="row gx-5">
+        <div class="col-12">
+        <div class="text-align: center p-3 border bg-light">
+            <!-- Start Card -->
+            <div class="card">
+            <img src="https://avatars.githubusercontent.com/u/97238866?v=4" alt="Foto de Perfil">
+            <div class="card-content">
+                <h2>Dalton Guimarães</h2>
+                <p>Graduado em economia com foco em dados públicos, Python e visualização com Qlik Sense e Dashboards interativos.</p>
+                <a href="https://github.com/Daltonguimaraes" target="_blank">Ver GitHub</a>
+            </div>
+            </div>
+            <!-- End Card -->
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
