@@ -1,62 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Configuração de Ambiente Python</title>
-
-  <!-- Ícone da aba -->
-  <link rel="icon" href="favicon/configurações.png">
-
-  <!-- Fonte -->
-  <link href="https://fonts.cdnfonts.com/css/source-sans-pro" rel="stylesheet">
-
-  <!-- Estilos locais -->
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/card.css">
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Configuração de Ambiente</title>
+  <link rel="icon" href="../../favicon/configurações.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding-top: 40px;
+      padding-bottom: 80px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+    }
+    h1, h2, h3 {
+      color: #0d6efd;
+    }
+    pre code {
+      background-color: #f1f1f1;
+      display: block;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .btn-back {
+      margin-bottom: 20px;
+    }
+    hr {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      border-color: #e0e0e0;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+    ol li {
+      margin-bottom: 1rem;
+    }
+    a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
+<body>
+  <div class="container">
+    <a class="btn btn-outline-primary btn-back" href="../../index.html#projetos">&larr; Voltar ao Início</a>
+    <h1>⚙️ Guia de Configuração de Ambiente Python</h1>
+    <p>Siga os passos abaixo para configurar um ambiente de desenvolvimento com Python e Flask.</p>
+    <hr />
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <p>Para instalar o Python 3.10 via linha de comando, o processo varia dependendo do seu sistema operacional. Aqui estão as instruções para Windows, Linux (Ubuntu/Debian e derivados) e macOS:</p>
+    <hr>
+    <h3 id="-1-no-windows-"><strong>1. No Windows:</strong></h3>
+    <h4 id="-op-o-1-instalador-oficial-recomendado-para-usu-rios-comuns-"><strong>Opção 1: Instalador oficial (recomendado para usuários comuns)</strong></h4>
+    <p>Baixe o instalador do Python 3.10 e execute via linha de comando:</p>
+    <pre><code class="lang-cmd">curl -<span class="hljs-keyword">o</span> <span class="hljs-keyword">python</span>-<span class="hljs-number">3.10</span>.<span class="hljs-keyword">exe</span> http<span class="hljs-variable">s:</span>//www.<span class="hljs-keyword">python</span>.org/ftp/<span class="hljs-keyword">python</span>/<span class="hljs-number">3.10</span>.<span class="hljs-number">0</span>/<span class="hljs-keyword">python</span>-<span class="hljs-number">3.10</span>.<span class="hljs-number">0</span>-amd64.<span class="hljs-keyword">exe</span>
+    <span class="hljs-keyword">python</span>-<span class="hljs-number">3.10</span>.<span class="hljs-keyword">exe</span> /quiet InstallAllUsers=<span class="hljs-number">1</span> PrependPath=<span class="hljs-number">1</span>
+    </code></pre>
+    <ul>
+    <li><code>/quiet</code>: Instala silenciosamente.</li>
+    <li><code>InstallAllUsers=1</code>: Instala para todos os usuários.</li>
+    <li><code>PrependPath=1</code>: Adiciona Python ao <code>PATH</code>.</li>
+    </ul>
+    <h4 id="-op-o-2-usando-chocolatey-gerenciador-de-pacotes-"><strong>Opção 2: Usando Chocolatey (gerenciador de pacotes)</strong></h4>
+    <p>Se você tem o <a href="https://chocolatey.org/">Chocolatey</a> instalado:</p>
+    <pre><code class="lang-cmd">choco install python --version=<span class="hljs-number">3.10</span><span class="hljs-number">.0</span>
+    </code></pre>
+    <hr>
+    <h3 id="-2-no-linux-ubuntu-debian-e-derivados-"><strong>2. No Linux (Ubuntu/Debian e derivados):</strong></h3>
+    <h4 id="-via-reposit-rio-oficial-m-todo-recomendado-"><strong>Via repositório oficial (método recomendado)</strong></h4>
+    <pre><code class="lang-bash">sudo apt update
+    sudo apt install software-properties-common -y
+    sudo<span class="hljs-built_in"> add-apt-repository </span>ppa:deadsnakes/ppa -y  <span class="hljs-comment"># Repositório com versões mais recentes</span>
+    sudo apt update
+    sudo apt install python3.10 -y
+    </code></pre>
+    <h4 id="-verificar-instala-o-"><strong>Verificar instalação:</strong></h4>
+    <pre><code class="lang-bash"><span class="hljs-keyword">python3</span>.<span class="hljs-number">10</span> --<span class="hljs-keyword">version</span>
+    </code></pre>
+    <h4 id="-instalar-pip-se-necess-rio-"><strong>Instalar <code>pip</code> (se necessário):</strong></h4>
+    <pre><code class="lang-bash"><span class="hljs-string">curl </span>-<span class="hljs-string">sS </span><span class="hljs-string">https:</span>//<span class="hljs-string">bootstrap.</span><span class="hljs-string">pypa.</span><span class="hljs-string">io/</span><span class="hljs-built_in">get-pip.py</span> | <span class="hljs-string">python3.</span><span class="hljs-string">10</span>
+    </code></pre>
+    <hr>
+    <h3 id="-3-no-macos-"><strong>3. No macOS:</strong></h3>
+    <h4 id="-via-homebrew-recomendado-"><strong>Via Homebrew (recomendado):</strong></h4>
+    <pre><code class="lang-bash"><span class="hljs-keyword">brew </span>update
+    <span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span>python@<span class="hljs-number">3</span>.<span class="hljs-number">10</span>
+    </code></pre>
+    <h4 id="-verificar-instala-o-"><strong>Verificar instalação:</strong></h4>
+    <pre><code class="lang-bash"><span class="hljs-keyword">python3</span>.<span class="hljs-number">10</span> --<span class="hljs-keyword">version</span>
+    </code></pre>
+    <h4 id="-alternativa-usando-pyenv-para-m-ltiplas-vers-es-do-python-"><strong>Alternativa: Usando pyenv (para múltiplas versões do Python)</strong></h4>
+    <pre><code class="lang-bash"><span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span>pyenv  <span class="hljs-comment"># Instala o pyenv</span>
+    pyenv <span class="hljs-keyword">install </span><span class="hljs-number">3</span>.<span class="hljs-number">10</span>.<span class="hljs-number">0</span>  <span class="hljs-comment"># Instala o Python 3.10</span>
+    pyenv global <span class="hljs-number">3</span>.<span class="hljs-number">10</span>.<span class="hljs-number">0</span>  <span class="hljs-comment"># Define como versão padrão</span>
+    </code></pre>
+    <hr>
+    <h3 id="-p-s-instala-o-todos-os-sistemas-"><strong>Pós-instalação (todos os sistemas):</strong></h3>
+    <ul>
+    <li>Verifique se o Python 3.10 está corretamente instalado:<pre><code class="lang-bash"><span class="hljs-keyword">python3</span>.<span class="hljs-number">10</span> --<span class="hljs-keyword">version</span>
+    </code></pre>
+    </li>
+    <li>Atualize o <code>pip</code> (gerenciador de pacotes):<pre><code class="lang-bash">python3.10 -m pip <span class="hljs-keyword">install</span> <span class="hljs-comment">--upgrade pip</span>
+    </code></pre>
+    </li>
+    </ul>
+    <hr>
+    <h3 id="-observa-es-"><strong>Observações:</strong></h3>
+    <ul>
+    <li>No Linux, se você precisar alternar entre versões do Python, use <code>update-alternatives</code> ou <code>pyenv</code>.</li>
+    <li>No Windows, certifique-se de marcar <strong>&quot;Add Python to PATH&quot;</strong> durante a instalação manual (caso não use o método <code>/quiet</code>).</li>
+    </ul>
 
-<!-- Script local -->
-<script src="js/index.js"></script>
-
-<section class="container my-5">
-<a class="btn btn-outline-primary btn-back" href="../../index.html#projetos">&larr; Voltar ao Início</a>
-  <h2 class="mb-4 text-primary">⚙️ Configuração de Ambiente Python</h2>
-
-  <p class="lead">Siga os passos abaixo para configurar um ambiente de desenvolvimento com Python e Flask.</p>
-
-  <ol class="list-group list-group-numbered mb-4">
-    <li class="list-group-item">
-      <strong>Criar o ambiente virtual:</strong><br>
-      <code>python3 -m venv ./env</code>
-    </li>
-    <li class="list-group-item">
-      <strong>Ativar o ambiente virtual:</strong><br>
-      <code>source ./env/bin/activate</code>
-    </li>
-    <li class="list-group-item">
-      <strong>Instalar o framework Flask:</strong><br>
-      <code>pip install Flask</code>
-    </li>
-    <li class="list-group-item">
-      <strong>Verificar a versão do Flask:</strong><br>
-      <code>python -m flask --version</code>
-    </li>
-    <li class="list-group-item">
-      <strong>Salvar os pacotes instalados:</strong><br>
-      <code>pip freeze > requirements.txt</code>
-    </li>
-    <li class="list-group-item">
-      <strong>Executar a aplicação:</strong><br>
-      <code>python app.py</code>
-    </li>
-  </ol>
-
-  <div class="alert alert-info" role="alert">
-    ✅ Certifique-se de estar na raiz do seu projeto ao executar esses comandos.
   </div>
-</section>
+</body>
+</html>

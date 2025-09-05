@@ -101,7 +101,7 @@ git config --global user.email "email@exemplo.com"</code></pre>
 
     <h3>4. Gerar chave SSH para GitHub</h3>
     <pre><code>ssh-keygen -t rsa -b 4096 -C "email@exemplo.com"</code></pre>
-    <pre><code>cat ~/.ssh/id_rsa.pub"</code></pre>
+    <pre><code>cat ~/.ssh/id_rsa.pub</code></pre>
     <p>Adicione a chave ao GitHub em <a href="https://github.com/settings/keys">Settings &gt; SSH Keys</a>.</p>
     <p>Teste a conexão:</p>
     <pre><code>ssh -T git@github.com</code></pre>
