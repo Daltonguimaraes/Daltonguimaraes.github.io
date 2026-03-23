@@ -14,3 +14,6 @@ Referencias e links úteis:
 
 4. Conversor de Markdown para HTML
 - <https://pandoc.org/try/>
+
+5. Criando Diagramas Profissionais com Mermaid
+- https://blog.trifenol.com/criando-diagramas-profissionais-com-mermaid/#:~:text=Mermaid%20%C3%A9%20uma%20ferramenta%20baseada,convertido%20em%20diagramas%20visuais%20elegantes.
