@@ -7,70 +7,98 @@ const svg = d3.select("#grafico")
                 .attr("height", altura);
 
 // Leitura do CSV
-d3.csv("../../data/dados.csv").then(data => {
-    // Conversão dos valores para numérico
-    data.forEach(d => {
-    d.inflacao = +d.inflacao;
+Promise.all([
+    d3.csv("../../data/ipca.csv"),
+    d3.csv("../../data/desemprego.csv")
+]).then(files => {
+    const [ipcaData, desempregoData] = files;
+
+// Convert values to numeric and parse dates
+ipcaData.forEach(d => {
+    d.ipca = +d.ipca;
+    d.ano = d3.timeParse("%Y")(d.ano);
+    if (!d.ano) {
+        console.log("Invalid year in ipcaData:", d);
+    }
+});
+
+desempregoData.forEach(d => {
     d.desemprego = +d.desemprego;
-    d.ano = d3.timeParse("%Y")(d.ano); // converte string "2015" em Date
-    });
+    d.ano = d3.timeParse("%Y")(d.ano);
+    if (!d.ano) {
+        console.log("Invalid year in desempregoData:", d);
+    }
+});
+
+// Merge data based on the year
+const mergedData = ipcaData.map(ipcaItem => {
+    const desempregoItem = desempregoData.find(desempregoItem => desempregoItem.ano.getFullYear() === ipcaItem.ano.getFullYear());
+    return { 
+        ano: ipcaItem.ano,
+        ipca: ipcaItem.ipca,
+        desemprego: desempregoItem ? desempregoItem.desemprego : null
+    };
+});
+
+// Log merged data for debugging
+console.log("Merged Data:", mergedData);
 
     // Escalas
     const x = d3.scaleTime()
-                .domain(d3.extent(data, d => d.ano))
+                .domain(d3.extent(mergedData, d => d.ano))
                 .range([margem.left, largura - margem.right]);
 
     const y = d3.scaleLinear()
-                .domain([0, d3.max(data, d => Math.max(d.inflacao, d.desemprego))])
+                .domain([0, d3.max(mergedData, d => Math.max(d.ipca, d.desemprego || 0))])
                 .nice()
                 .range([altura - margem.bottom, margem.top]);
 
     // Eixos
     svg.append("g")
-    .attr("transform", `translate(0, ${altura - margem.bottom})`)
-    .call(d3.axisBottom(x).ticks(8).tickFormat(d3.timeFormat("%Y")));
+       .attr("transform", `translate(0, ${altura - margem.bottom})`)
+       .call(d3.axisBottom(x).ticks(8).tickFormat(d3.timeFormat("%Y")));
 
     svg.append("g")
-    .attr("transform", `translate(${margem.left}, 0)`)
-    .call(d3.axisLeft(y));
+       .attr("transform", `translate(${margem.left}, 0)`)
+       .call(d3.axisLeft(y));
 
     // Linhas
-    const linhaInflacao = d3.line()
-    .x(d => x(d.ano))
-    .y(d => y(d.inflacao))
-    .curve(d3.curveMonotoneX);
+    const linhaIPCA = d3.line()
+                      .x(d => x(d.ano))
+                      .y(d => y(d.ipca))
+                      .curve(d3.curveMonotoneX);
 
     const linhaDesemprego = d3.line()
-    .x(d => x(d.ano))
-    .y(d => y(d.desemprego))
-    .curve(d3.curveMonotoneX);
+                            .x(d => x(d.ano))
+                            .y(d => y(d.desemprego || 0))
+                            .curve(d3.curveMonotoneX);
 
-    // Linha inflação
+    // Linha IPCA
     svg.append("path")
-    .datum(data)
-    .attr("fill", "none")
-    .attr("stroke", "steelblue")
-    .attr("stroke-width", 2)
-    .attr("d", linhaInflacao);
+       .datum(mergedData)
+       .attr("fill", "none")
+       .attr("stroke", "steelblue")
+       .attr("stroke-width", 2)
+       .attr("d", linhaIPCA);
 
     // Linha desemprego
     svg.append("path")
-    .datum(data)
-    .attr("fill", "none")
-    .attr("stroke", "tomato")
-    .attr("stroke-width", 2)
-    .attr("d", linhaDesemprego);
+       .datum(mergedData)
+       .attr("fill", "none")
+       .attr("stroke", "tomato")
+       .attr("stroke-width", 2)
+       .attr("d", linhaDesemprego);
 
     // Legenda
     svg.append("text")
-    .attr("x", largura - margem.right + 10)
-    .attr("y", y(data[data.length - 1].inflacao))
-    .attr("fill", "steelblue")
-    .text("Inflação (%)");
+       .attr("x", largura - margem.right + 10)
+       .attr("y", y(mergedData[mergedData.length - 1].ipca))
+       .attr("fill", "steelblue")
+       .text("IPCA (%)");
 
     svg.append("text")
-    .attr("x", largura - margem.right + 10)
-    .attr("y", y(data[data.length - 1].desemprego))
-    .attr("fill", "tomato")
-    .text("Desemprego (%)");
+       .attr("x", largura - margem.right + 10)
+       .attr("y", y(mergedData[mergedData.length - 1].desemprego || 0))
+       .attr("fill", "tomato")
+       .text("Desemprego (%)");
 });

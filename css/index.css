@@ -1,6 +1,20 @@
 html, body {
   height: 100%;
 }
+/* Ensure body and html take up 100% height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#tab-content {
+  flex: 1; /* This will push the footer to the bottom */
+}
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
