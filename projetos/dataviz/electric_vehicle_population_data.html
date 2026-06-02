@@ -1,29 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Conjunto de dados da população de veículos elétricos</title>
+	<link rel="icon" href="../../favicon/apresentacao_car.png" />
 	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="../../css/electric_vehicle_population_data.css">
 </head>
 <body>
-    
-	<h1>Conjunto de dados da população de veículos elétricos</h1>
-	
-	<div class="table-container">
-		<!-- Tabela de dados -->
-		<table>
-			<tr>
-				<th>City</th>
-				<th>County</th>
-				<th>Make</th>
-				<th>Model</th>
-				<th>Model Year</th>
-			</tr>
-		</table>
+
+	<!-- Filtros -->
+	<div class="filters">
+		<!-- Filtro - Ano -->
+		<div class="filter-group">
+			<p>Ano do Modelo</p>
+			<div id="filter-year-box" class="select-box">
+				<div class="select-box__current" tabindex="1"></div>
+				<ul class="select-box__list"></ul>
+			</div>
+		</div>
+		<!-- Filtro - Marca -->
+		<div class="filter-group">
+			<p>Marca</p>
+			<div id="filter-make-box" class="select-box">
+				<div class="select-box__current" tabindex="1"></div>
+				<ul class="select-box__list"></ul>
+			</div>
+		</div>
+		<!-- Filtro - Modelo -->
+		<div class="filter-group">
+			<p>Modelo</p>
+			<div id="filter-model-box" class="select-box">
+				<div class="select-box__current" tabindex="1"></div>
+				<ul class="select-box__list"></ul>
+			</div>
+		</div>
+		<!-- Filtro - Cidade -->
+		<div class="filter-group">
+			<p>Cidade</p>
+			<div id="filter-city-box" class="select-box">
+				<div class="select-box__current" tabindex="1"></div>
+				<ul class="select-box__list"></ul>
+			</div>
+		</div>
 	</div>
 
+	<div class="kpi-container">
+		<!-- Número de veículos -->
+		<div class="kpi-card">
+			<span class="kpi-label">Total de Veículos</span>
+			<span id="kpi-total" class="kpi-value">-</span>
+		</div>
+		<!-- Cidade com mais carros -->
+		<div class="kpi-card">
+			<span class="kpi-label">Cidade com mais carros</span>
+			<span id="kpi-city" class="kpi-value">-</span>
+		</div>
+		<!-- Modelo mais registrado -->
+		<div class="kpi-card">
+			<span class="kpi-label">Modelo mais registrado</span>
+			<span id="kpi-model" class="kpi-value">-</span>
+		</div>
+		<!-- Maior Electric Range -->
+		<div class="kpi-card">
+			<span class="kpi-label">Maior Electric Range</span>
+			<span id="kpi-range" class="kpi-value">-</span>
+		</div>
+
+		<!-- Ano com maior registro de caros elétricos -->
+		<div class="kpi-card">
+			<span class="kpi-label">Ano com mais registros</span>
+			<span id="kpi-year" class="kpi-value">-</span>
+		</div>
+
+		<!-- Números de Fabricantes Registrados -->
+		<div class="kpi-card">
+			<span class="kpi-label">Total de Fabricantes</span>
+			<span id="kpi-makes" class="kpi-value">-</span>
+		</div>
+	</div>
+
+	<!-- Rankings (Tops) -->
+	<div class="tops-grid">
+		<div class="top-card">
+			<h3>Top 5 Cidades</h3>
+			<div id="chart-cities" class="mini-chart"></div>
+		</div>
+
+		<div class="top-card">
+			<h3>Top 3 Fabricantes</h3>
+			<div id="chart-makes" class="mini-chart"></div>
+		</div>
+
+		<div class="top-card">
+			<h3>Top 10 Modelos</h3>
+			<div id="chart-models" class="mini-chart"></div>
+		</div>
+
+		<div class="top-card">
+			<h3>Top 7 Autonomia (Range)</h3>
+			<div id="chart-ranges" class="mini-chart"></div>
+		</div>
+	</div>
+
+	<!-- Mapa -->
+	<div class="data-content container">
+		<div class="p-4 text-center">
+			<h1>Distribuição por Condado (Washington State)</h1>
+			<div id="mapa"></div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="../../js/electric_vehicle_population_data.js"></script>
 </body>
 </html>
